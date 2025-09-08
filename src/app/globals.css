@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+:root {
+  --cor-vivo: #663399;
+  --bakcground: #f8f8f8c5;
+}
+
+
+body {
+  background-color: var(--bakcground);
+  font-family: 'Inter', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+}
