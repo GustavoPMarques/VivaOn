@@ -32,7 +32,7 @@ export default function Home() {
       ),
     },
     {
-      id: "Buddy",
+      id: "buddy",
       label: "Buddy",
       desc: "Acompanhe colaboradores e se comunique com gestores",
       icon: (
@@ -75,7 +75,7 @@ export default function Home() {
       {/* Header */}
       <header className="flex items-center justify-center pt-6 sm:pt-8 pb-8 px-4 sm:px-12">
         <div className="text-center">
-          <div className="text-[56px] sm:text-[80px] font-extrabold tracking-wide text-[#663399] leading-none">vivo</div>
+          <div className="text-[56px] sm:text-[80px] font-bold tracking-wide text-[#663399] leading-none" style={{ fontFamily: 'Montserrat, Inter, Segoe UI, Roboto, Arial, sans-serif', letterSpacing: '0.01em' }}>vivo</div>
           <span className="block font-normal text-[28px] sm:text-[36px] text-[#663399] mt-2">Onboarding</span>
         </div>
       </header>
