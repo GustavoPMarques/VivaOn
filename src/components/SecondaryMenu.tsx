@@ -22,9 +22,10 @@ export default function SecondaryMenu({ items, className = "" }: SecondaryMenuPr
           <button
             key={item.path}
             onClick={() => router.push(item.path)}
-            className={`flex items-center gap-2 px-4 py-1.5 sm:px-6 sm:py-2 rounded-full font-semibold transition-colors duration-200 whitespace-nowrap shadow-sm
-              ${pathname === item.path ? 'bg-[#4b0fa6] text-white' : 'text-[#1a1a2e] bg-white hover:bg-[#ede9f7]'}
+            className={`flex items-center gap-2 px-4 py-1.5 sm:px-6 sm:py-2 rounded-full font-semibold transition-colors duration-200 whitespace-nowrap shadow-sm focus:outline-none focus:ring-2 focus:ring-[#663399]
+              ${pathname === item.path ? 'bg-[#663399] text-white' : 'text-[#1a1a2e] bg-white hover:bg-[#ede9f7]'}
             `}
+            style={{ boxShadow: 'none' }}
           >
             {item.label}
           </button>
