@@ -12,7 +12,9 @@ export default function GestorHome() {
       id="geral-div"
       className="w-full h-full flex flex-col items-center justify-center gap-5"
     >
-      <p className="text-3xl font-bold">Olá, Gestor Alfredo!</p>
+      <p className="text-3xl font-bold text-[var(--cor-vivo)]">
+        Olá, Gestor Alfredo!
+      </p>
       <div id="quadros-div" className="flex flex-col w-full h-full gap-3">
         <div id="secao-1-div" className="flex w-full gap-3">
           {/*TODO: Componentizar esse card, facilita na criação dos outros cards 
