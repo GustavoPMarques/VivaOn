@@ -1,6 +1,8 @@
+
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { User, Users, Briefcase } from "lucide-react";
 
 export default function Home() {
   const [nome, setNome] = useState("");
@@ -22,30 +24,25 @@ export default function Home() {
     // Adicione outros redirecionamentos para outros perfis se desejar
   }
 
+
   const perfis = [
     {
       id: "colaborador",
       label: "Novo colaborador",
       desc: "Acesse cursos, chat com mentor e acompanhe seu progresso",
-      icon: (
-        <svg width="48" height="48" fill="#663399" viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.5-1.8 4.5-4.5S14.7 3 12 3 7.5 4.8 7.5 7.5 9.3 12 12 12zm0 1.5c-3 0-9 1.5-9 4.5V21h18v-3c0-3-6-4.5-9-4.5z" /></svg>
-      ),
+      icon: <User size={48} color="#663399" />,
     },
     {
       id: "buddy",
       label: "Buddy",
       desc: "Acompanhe colaboradores e se comunique com gestores",
-      icon: (
-        <svg width="48" height="48" fill="#663399" viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.5-1.8 4.5-4.5S14.7 3 12 3 7.5 4.8 7.5 7.5 9.3 12 12 12zm0 1.5c-3 0-9 1.5-9 4.5V21h18v-3c0-3-6-4.5-9-4.5z" /><rect x="8" y="16" width="8" height="2" rx="1" fill="#663399" /></svg>
-      ),
+      icon: <Users size={48} color="#663399" />,
     },
     {
       id: "gestor",
       label: "Gestor",
       desc: "Gerencie equipes e acompanhe rankings de desempenho",
-      icon: (
-        <svg width="48" height="48" fill="#663399" viewBox="0 0 24 24"><path d="M20 8h-3V4a2 2 0 0 0-2-2h-6a2 2 0 0 0-2 2v4H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2zm-9 10H7v-4h4v4zm6 0h-4v-6h4v6z" /></svg>
-      ),
+      icon: <Briefcase size={48} color="#663399" />,
     },
   ];
 

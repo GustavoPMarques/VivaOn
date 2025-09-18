@@ -1,75 +1,105 @@
+
 "use client";
-import { useState } from "react";
-import { Calendar, ClipboardList, BellDot } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Calendar, ClipboardList, BellDot, CalendarPlus, StickyNote, BarChart2, TrendingUp, MessageSquare } from "lucide-react";
 import CardInfo from "./_components/CardInfo";
 
 export default function GestorHome() {
-  const [reunioes, setReunioes] = useState(3);
-  const [tarefaPrazoAmanha, setTarefaPrazoAmanha] = useState(2);
-  const [notificacao, setNotificacao] = useState(1);
-  return (
-    <div
-      id="geral-div"
-      className="w-full h-full flex flex-col items-center justify-center gap-5"
-    >
-      <p className="text-3xl font-bold text-[var(--cor-vivo)]">
-        Olá, Gestor Alfredo!
-      </p>
-      <div id="quadros-div" className="flex flex-col w-full h-full gap-3">
-        <div id="secao-1-div" className="flex w-full gap-3">
-          {/*TODO: Componentizar esse card, facilita na criação dos outros cards 
-              Props: header
-              Resto do texto pode ser feito dentro do componente exportado
-              Ex:
-              <CardInfo header="Resumo do dia">
-              abababbaba
-              bebebebeb
-              </CardInfo>
-          */}
-          <div
-            id="resumo-do-dia-div"
-            className="flex flex-col bg-white rounded-xl p-3 w-full text-gray-800"
-          >
-            <div className="w-full flex justify-center">
-              <p className="text-xl font-bold">Resumo do Dia</p>
-            </div>
-            <CardInfo
-              icon={Calendar}
-              numero={reunioes}
-              texto=" Reuniões Hoje"
-            />
-            <CardInfo
-              icon={ClipboardList}
-              numero={tarefaPrazoAmanha}
-              texto=" Tarefas com prazo AMANHÃ"
-            />
-            <CardInfo
-              icon={BellDot}
-              numero={notificacao}
-              texto=" Notificações não lidas"
-            />
-          </div>
+  const [nome, setNome] = useState<string>("");
+  useEffect(() => {
+    const nomeSalvo = localStorage.getItem("nomeUsuario") || "";
+    setNome(nomeSalvo);
+  }, []);
 
-          <div
-            id="atalhos-rapidos-div"
-            className="flex flex-col bg-white rounded-xl p-3 w-full"
-          >
-            Atalhos Rápidos
+  // Mock de dados
+  const reunioesHoje = 2;
+  const tarefasAmanha = 1;
+  const notificacoes = 3;
+  const reunioesMes = 5;
+  const metasCumpridas = 80;
+  const feedbacks = 2;
+
+  return (
+    <div className="w-full min-h-screen flex flex-col items-center bg-[#f5f3fa] py-6 px-2">
+      <p className="text-2xl sm:text-3xl font-bold text-[#663399] mb-6 text-center">
+        Olá, Gestor{nome ? ` ${nome}` : ""}!
+      </p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-5xl">
+        {/* Resumo do Dia */}
+        <div className="flex flex-col bg-white rounded-xl p-5 shadow-sm gap-2">
+          <p className="text-lg font-bold text-[#663399] mb-2">Resumo do Dia</p>
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center gap-3 text-base text-[#663399]">
+              <Calendar size={28} />
+              <span className="font-semibold text-black">Você tem <span className="text-[#663399] font-bold">{reunioesHoje} reuniões</span> hoje</span>
+            </div>
+            <div className="flex items-center gap-3 text-base text-[#663399]">
+              <ClipboardList size={28} />
+              <span className="font-semibold text-black">1 tarefa com prazo <span className="text-[#663399] font-bold">AMANHÃ</span></span>
+            </div>
+            <div className="flex items-center gap-3 text-base text-[#663399]">
+              <BellDot size={28} />
+              <span className="font-semibold text-black">3 notificações não lidas</span>
+            </div>
           </div>
         </div>
 
-        <div id="secao-2-div" className="flex w-full gap-3">
-          <div
-            id="indicadores-pessoais-div"
-            className="flex flex-col bg-white rounded-xl p-3 w-full"
-          >
-            Indicadores Pessoais
+        {/* Atalhos Rápidos */}
+        <div className="flex flex-col bg-white rounded-xl p-5 shadow-sm gap-3">
+          <p className="text-lg font-bold text-[#663399] mb-2">Atalhos Rápidos</p>
+          <div className="flex flex-row gap-3 justify-between">
+            <button className="flex flex-col items-center justify-center bg-[#ede9f7] hover:bg-[#e0d6f7] rounded-lg p-3 w-full transition-colors">
+              <CalendarPlus size={28} color="#663399" />
+              <span className="font-semibold text-black text-sm mt-1">Agendar reunião</span>
+            </button>
+            <button className="flex flex-col items-center justify-center bg-[#ede9f7] hover:bg-[#e0d6f7] rounded-lg p-3 w-full transition-colors">
+              <StickyNote size={28} color="#663399" />
+              <span className="font-semibold text-black text-sm mt-1">Criar lembrete</span>
+            </button>
+            <button className="flex flex-col items-center justify-center bg-[#ede9f7] hover:bg-[#e0d6f7] rounded-lg p-3 w-full transition-colors">
+              <BarChart2 size={28} color="#663399" />
+              <span className="font-semibold text-black text-sm mt-1">Gerar relatório</span>
+            </button>
           </div>
-          <div
-            id="agenda-interna-div"
-            className="flex flex-col bg-white rounded-xl p-3 w-full"
-          >
-            Agenda Interna
+        </div>
+
+        {/* Indicadores Pessoais */}
+        <div className="flex flex-col bg-white rounded-xl p-5 shadow-sm gap-2">
+          <p className="text-lg font-bold text-[#663399] mb-2">Indicadores Pessoais</p>
+          <div className="flex items-center gap-3 text-base text-[#663399]">
+            <Calendar size={24} />
+            <span className="font-semibold text-black">{reunioesMes} REUNIÕES ESTE MÊS</span>
+          </div>
+          <div className="flex items-center gap-3 text-base text-[#663399]">
+            <TrendingUp size={24} />
+            <span className="font-semibold text-black">{metasCumpridas}% das metas cumpridas</span>
+          </div>
+          <div className="flex items-center gap-3 text-base text-[#663399]">
+            <MessageSquare size={24} />
+            <span className="font-semibold text-black">Feedbacks</span>
+          </div>
+        </div>
+
+        {/* Agenda Integrada */}
+        <div className="flex flex-col bg-white rounded-xl p-5 shadow-sm gap-2">
+          <p className="text-lg font-bold text-[#663399] mb-2">Agenda Integrada</p>
+          <div className="w-full grid grid-rows-2 grid-cols-7 gap-y-1 text-center text-black font-semibold text-lg mt-2">
+            {/* Dias da semana */}
+            <span className="text-[#663399]">D</span>
+            <span className="text-[#663399]">S</span>
+            <span className="text-[#663399]">T</span>
+            <span className="text-[#663399]">Q</span>
+            <span className="text-[#663399]">Q</span>
+            <span className="text-[#663399]">S</span>
+            <span className="text-[#663399]">S</span>
+            {/* Números */}
+            <span>29</span>
+            <span>30</span>
+            <span>31</span>
+            <span className="bg-[#663399] text-white rounded px-2">01</span>
+            <span>02</span>
+            <span>03</span>
+            <span>04</span>
           </div>
         </div>
       </div>
