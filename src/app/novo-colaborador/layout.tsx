@@ -1,6 +1,5 @@
 import NavBar from "@/_components/NavBar";
 import SecondaryMenu from "@/_components/SecondaryMenu";
-import RoleSwitcher from "@/_components/RoleSwitcher";
 
 const secondaryMenuItems = [
   { label: "PERFIL", path: "/novo-colaborador/perfil" },
